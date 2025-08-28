@@ -1,4 +1,36 @@
-#  TestCase API Documentation
+#  Travel Booking Test Framework (Spring Boot + JPA + MySQL)
+
+This project is a **Test Management Framework** built with **Spring Boot, Spring Data JPA, and MySQL**.  
+It manages **Test Cases** (e.g., Login Test, Search Flights Test) and their **Test Results** (e.g., PASSED, FAILED).  
+The APIs are **RESTful** and can be tested with **Postman** or **curl**.
+
+---
+
+## ️ Setup Instructions
+
+## 1) Database Setup (MySQL)
+### Make sure you have MySQL running locally.
+```bash
+CREATE DATABASE testframework;
+```
+
+
+###  Configure application.properties
+```bash
+spring.datasource.url=jdbc:mysql://localhost:3306/testframework
+spring.datasource.username=root
+spring.datasource.password=yourpassword
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+### Run the Application
+```bash
+mvn spring-boot:run
+```
+**The app will start at (http://localhost:8080)**
+
+#  TestCase And TestResult API Documentation
+
 
 This project provides a simple **TestCase Management API** that allows you to create, retrieve, update, and delete test cases.
 
@@ -13,6 +45,7 @@ This project provides a simple **TestCase Management API** that allows you to cr
 **Request**
 ```http
 POST http://localhost:8080/api/testcases
+
 Content-Type: application/json
 
 {
