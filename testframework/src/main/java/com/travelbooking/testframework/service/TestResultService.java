@@ -20,22 +20,22 @@ public class TestResultService {
         this.testCaseRepository = testCaseRepository;
     }
 
-    // ✅ Get all test results
+
     public List<TestResult> getAllTestResults() {
         return testResultRepository.findAll();
     }
 
-    // ✅ Get a single test result by ID
+
     public Optional<TestResult> getTestResultById(Long id) {
         return testResultRepository.findById(id);
     }
 
-    // ✅ Get all results belonging to a test case
+
     public List<TestResult> getResultsByTestCase(Long testCaseId) {
         return testResultRepository.findByTestCase_Id(testCaseId);
     }
 
-    // ✅ Create a new test result (fix: fetch full TestCase)
+
     public TestResult createTestResult(TestResult testResult) {
         Long testCaseId = testResult.getTestCase().getId();
         TestCase testCase = testCaseRepository.findById(testCaseId)
@@ -45,7 +45,7 @@ public class TestResultService {
         return testResultRepository.save(testResult);
     }
 
-    // ✅ Update a test result (fix: fetch full TestCase if needed)
+
     public TestResult updateTestResult(Long id, TestResult updatedResult) {
         return testResultRepository.findById(id).map(existing -> {
             existing.setStatus(updatedResult.getStatus());
@@ -62,7 +62,7 @@ public class TestResultService {
         }).orElseThrow(() -> new RuntimeException("TestResult not found with id " + id));
     }
 
-    // ✅ Delete a test result
+
     public void deleteTestResult(Long id) {
         testResultRepository.deleteById(id);
     }
